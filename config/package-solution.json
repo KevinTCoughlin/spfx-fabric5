@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-fabric-5-client-side-solution",
+    "id": "18fa9e93-c077-4bce-88e1-fbba49f93a7f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-fabric-5.sppkg"
+  }
+}
