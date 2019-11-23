@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IHelloWorldProps } from './IHelloWorldProps';
-import { Button, Customizer, ICustomizerProps, ITheme, createTheme } from 'office-ui-fabric-react';
+import { Customizer, ICustomizerProps, ITheme, createTheme, PrimaryButton, DefaultButton } from 'office-ui-fabric-react';
 
 export const theme: ITheme = createTheme({
   palette: {
@@ -33,18 +33,27 @@ export const theme: ITheme = createTheme({
   }
 });
 
-export default class HelloWorld extends React.Component<IHelloWorldProps, {}> {
+export default class HelloWorld extends React.Component<IHelloWorldProps, { renderTheme: boolean }> {
+  constructor(props: IHelloWorldProps) {
+    super(props);
+
+    this.state = {
+      renderTheme: false
+    }
+  }
+
   public render(): React.ReactElement<IHelloWorldProps> {
-    const themeCustomizations: ICustomizerProps = {
+    const themeCustomizations: ICustomizerProps = this.state.renderTheme ? {
       settings: {
         theme
       }
-    };
+    } : {};
     
     return (
       <Customizer {...themeCustomizations}>
         <h1>Hello world</h1>
-        <Button text="Test" />
+        <PrimaryButton text="Toggle theme" onClick={() => this.setState({ renderTheme: !this.state.renderTheme })} />
+        <DefaultButton text="Cancel" />
       </Customizer>
     );
   }
